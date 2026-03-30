@@ -360,6 +360,7 @@ export default function App() {
   // Create state to store student data
   // Syntax hint:
   // const [student, setStudent] = useState(____);
+  const [student, setStudent] = useState(null);
 
   // TODO 8:
   // Request student data from the server when the page loads
@@ -369,6 +370,13 @@ export default function App() {
   //   .then((data) => {
   //     setStudent(data);
   //   });
+  useEffect(() => {
+    fetch('http://localhost:3000/student')
+      .then((res) => res.json())
+      .then((data) => {
+        setStudent(data);
+      });
+  }, []);
 
   return (
     <main className="app-shell">
